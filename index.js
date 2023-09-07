@@ -13,3 +13,17 @@ for (let i = 1; i <= grid_r; i++){
         grid_row.appendChild(new_div);
     }
 }
+ 
+
+function effect(element){
+    element.addEventListener("mouseover", () => {
+        element.setAttribute("style", "background: lightblue;");
+    });
+}
+
+
+const grid_child = document.querySelectorAll(".grid-child");
+
+grid_child.forEach(element => {
+    effect(element)
+});
