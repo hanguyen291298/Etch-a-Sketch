@@ -1,7 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-image: url("background.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#range-size{
+    accent-color: lightblue;
+}
+.title{
+    margin-top: 20px;
+    font-size: 64px;
+    color: white;
+    text-align: center;
+}
+
+span{
+    font-size: 24px;
+    color: white;
+}
+
+.main-container{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
 .grid-container{
     display: flex;
     flex-direction: column;
-
+    align-self: center;
+    width: 640px;
+    height: 640px;
+    border: 1px solid lightblue;
 }
 
 .grid-row{
@@ -10,8 +44,12 @@
     
 }
 .grid-child{
-    border: 1px solid blue;
-    width: 30px;
-    height: 30px;
+    border: 0.001px solid gray;
+    
 }
 
+.control-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
