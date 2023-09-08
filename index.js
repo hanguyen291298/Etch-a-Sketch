@@ -1,3 +1,28 @@
+// Create Pickr instance
+
+const pickr = Pickr.create({
+    el: '.color-picker',
+    theme: 'classic',
+    components: {
+
+    // Main components
+    preview: true,
+    opacity: true,
+    hue: true,
+
+    // Input / output Options
+    interaction: {
+    hex: true,
+    rgba: true,
+    hsla: true,
+    hsva: true,
+    cmyk: true,
+    input: true,
+    clear: true,
+    save: true,
+}
+}
+});
 
 // Update the size evey time the player pull the range input
 const your_grid_size = document.querySelector(".your-grid-size");
@@ -39,13 +64,34 @@ function createGrid(size){
     }
 }
 
+// get the selected color from buttons
+const  defaultBackgroundMouseOver = "lightblue"
+let SELECTED_COLOR = defaultBackgroundMouseOver;
+const default_button = document.querySelector(".default-color");
+
+
+default_button.addEventListener("click", ()=>{
+    SELECTED_COLOR = defaultBackgroundMouseOver
+})
+
+pickr.on("save", (color)=>{
+    SELECTED_COLOR = color.toHEXA().toString();    
+})
 
 // Create effection to divs that the mouse over
 
 function effect(element){
     element.addEventListener("mouseover", () => {
-        element.style.backgroundColor = "lightblue";
-    });
+        element.style.backgroundColor = SELECTED_COLOR;       
+    })
 }
 
+// Create a function to clear the sketch every time the player press the clear button
+const clear_button = document.querySelector(".clear")
+
+function clear(){
+    UpdateSize()
+}
+
+clear_button.addEventListener("click", clear)
 
