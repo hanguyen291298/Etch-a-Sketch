@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,15 +19,19 @@
         </div>
         <div class="grid-container"></div>
         <div class="control-buttons">
+            <button class="grid-background">Grid Background</button>
             <button class="default-color">Default Color</button>
-            <button class="chose-color">Choose Your Color</button>
+            <div class="color-palette">
+                <label class="chose-color">Color Palette: </label>
+                <div class="color-picker"></div>
+            </div>
             <button class="clear">Clear</button>
+            
             
         </div>
         
     </div>
     
-
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script src="index.js"></script>
-</body>
 </html>
