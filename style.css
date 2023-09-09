@@ -22,7 +22,7 @@ body{
     color: whitesmoke;
     text-align: center;
 }
-/*------------------------------------------get size---------------------------*/
+/*------------------------------------------get size and show grid---------------------------*/
 #range-size{
     accent-color: lightblue;
     margin-top: 10px;
@@ -37,6 +37,39 @@ span{
     margin-bottom: 5px;
 }
 
+.switch{
+    color: white;
+}
+#toggle{
+    display: block;
+    position: relative;
+    width: 32px;
+    height: 16px;
+    border-radius: 16px;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+#toggle .indicator{
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    transform: scale(0.9);
+    top: 0;
+    left: 0;
+    background-color: aqua;
+    transition: 0.5s;
+}
+
+#toggle.active .indicator{
+    left: 16px;
+}
+#toggle.off .indicator{
+    left: 0;
+}
+
 /*---------------------------------------main container---------------------------*/
 .main-container{
     display: flex;
@@ -48,9 +81,11 @@ span{
     display: flex;
     flex-direction: column;
     align-self: center;
-    width: 640px;
+    width: 642px;
     height: 640px;
-    border: 1px solid lightblue;
+    border: 1px ridge lightblue;
+    background-color: white;
+    
 }
 
 .grid-row{
@@ -59,7 +94,8 @@ span{
     
 }
 .grid-child{
-    border: 0.001px solid gray;
+    border-style: none;
+    border-width: 0 1px 1px 0;
     
 }
 /*------------------------------------------control buttons---------------------------*/
@@ -70,7 +106,7 @@ span{
     margin-top: 50px;
 }
 
-button, .chose-color{
+button, .chose-color, .grid-background{
     border: 2px solid lightblue;
     border-radius: 5px;
     padding: 5px;
@@ -83,6 +119,6 @@ button, .chose-color{
 
 .color-palette{
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 
