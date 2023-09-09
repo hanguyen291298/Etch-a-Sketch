@@ -17,13 +17,12 @@
             <div class="your-grid-size"><span class="size-value"></span></div>
             <input type="range" id="range-size" name="size" min="1" max="100">
             <div class="switch">
-                <label>Show Grid</label>
+                <label>Show Grid: </label>
                 <div id="toggle">
                     <div class="indicator"></div>
                 </div>
             </div>
         
-
         </div>
         <div class="grid-container"></div>
         <div class="control-buttons">
@@ -35,6 +34,16 @@
             <div class="color-palette">
                 <label class="grid-background">Background Palette: </label>
                 <div class="background-picker"></div>
+            </div>
+            <div class="mouse-effect">
+                <button id="mouse-effect">Mouse Effect ⋮</button>
+                <form class="effect-content">
+                    <input type="radio" name="mouse" id="mouseover">
+                    <label for="mouseover">Mouse Over</label>    
+                    <br>                
+                    <input type="radio" name="mouse" id="mousedown">
+                    <label for="mousedown">Mouse Down</label>
+                </form>
             </div>
             <button class="clear">Clear</button>
             
