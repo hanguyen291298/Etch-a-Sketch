@@ -123,51 +123,58 @@ mouse_effect.addEventListener("click", ()=>{
  })
  
 // return true or false when the type of mouse effect is chosen
-type = "mouseover"
-const mousedown = document.getElementById("mousedown")
-const mouseover = document.getElementById("mouseover")
 
-mousedown.addEventListener("click", ()=>{
-    type = "mousedown"
-    effect(type)
-})
-mouseover.addEventListener("click", ()=>{
-    type = "mouseover"
-    effect(type)
-}
-)
- 
-// Get the selected color from buttons to apply it 
-// Create effection to divs that the mouse over
+const mousedown = document.getElementById("mousedown");
+const mouseover = document.getElementById("mouseover");
 
-const  defaultBackgroundMouseOver = "lightblue";
-let SELECTED_COLOR = defaultBackgroundMouseOver;
+let type = "mouseover"; // Initialize type with a default value
+
+mousedown.addEventListener("click", () => {
+  type = "mousedown"; // Update the type when mousedown is clicked
+  effect();
+});
+
+mouseover.addEventListener("click", () => {
+  type = "mouseover"; // Update the type when mouseover is clicked
+  effect();
+});
+
+// Get the selected color from buttons to apply it
+const defaultBackground = "lightblue";
+let SELECTED_COLOR = defaultBackground;
 const default_color = document.querySelector(".default-color");
 
+default_color.addEventListener("click", () => {
+  SELECTED_COLOR = defaultBackground;
+  effect(); // Reapply the effect when the color is changed
+});
 
-default_color.addEventListener("click", ()=>{
-    SELECTED_COLOR = defaultBackgroundMouseOver
-})
+pickr.on("save", (color) => {
+  SELECTED_COLOR = color.toHEXA().toString();
+  effect(); // Reapply the effect when the color is changed
+});
 
-pickr.on("save", (color)=>{
-    SELECTED_COLOR = color.toHEXA().toString();    
-})
+function effect() {
+  const grid_childs = document.querySelectorAll(".grid-child");
 
-function effect(type_mouse){
-    const grid_childs = document.querySelectorAll(".grid-child")
-    grid_childs.forEach(element => {
-        if (type_mouse === "mouseover"){
-            element.addEventListener(type_mouse, ()=>{
-                element.style.backgroundColor = SELECTED_COLOR;
-            })
-        }
-        else if (type_mouse === "mousedown"){
-            element.addEventListener(type_mouse, ()=>{
-                element.style.backgroundColor = SELECTED_COLOR;
-            })
-        }
- } )
+  grid_childs.forEach(element => {
+    element.removeEventListener("mousedown", handleMouse);
+    element.removeEventListener("mouseover", handleMouse);
+
+    if (type === "mousedown") {
+      element.addEventListener("mousedown", handleMouse);
+    } else if (type === "mouseover") {
+      element.addEventListener("mouseover", handleMouse);
+    }
+  });
 }
+
+function handleMouse() {
+  this.style.backgroundColor = SELECTED_COLOR;
+}
+
+
+// Initial setup of the effect based on default type and color
 
 
   
