@@ -7,13 +7,15 @@ body{
     font-family: 'Sorts Mill Goudy', serif;
     display: flex;
     flex-direction: column;
+    align-items: center;
+
     gap: 20px;
 }
 /*-------------------------------title css-------------------------------------*/
 .title{
     width: 50%;
     margin: 10px auto;
-    padding: 20px;
+    padding: 10px;
     font-size: 48px;
     font-weight: bold;
     border: 2px solid lightblue;
@@ -31,14 +33,23 @@ body{
 span{
     font-size: 20px;
     color: white;
-    border: 2px solid lightblue;
+    border: 1px ridge lightblue;
     border-radius: 5px;
     padding: 2px;
     margin-bottom: 5px;
 }
 
+
+/*--------------------------------switch ----------------------------*/
+
 .switch{
     color: white;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.switch label{
+    font-size: 20px;
 }
 #toggle{
     display: block;
@@ -78,13 +89,15 @@ span{
 }
 /*------------------------------------------grid container---------------------------*/
 .grid-container{
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     align-self: center;
-    width: 642px;
-    height: 640px;
-    border: 1px ridge lightblue;
+    width: 580px;
+    height: 580px;
+    border: 50px ridge lightblue;
     background-color: white;
+    border-radius: 10px;
     
 }
 
@@ -107,7 +120,7 @@ span{
 }
 
 button, .chose-color, .grid-background{
-    border: 2px solid lightblue;
+    border: 1px ridge lightblue;
     border-radius: 5px;
     padding: 5px;
     font-size: 18px;
@@ -122,3 +135,28 @@ button, .chose-color, .grid-background{
     gap: 10px;
 }
 
+.effect-content{
+    width: 160px;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: lightcyan;
+    justify-content: center;
+    align-items: flex-start;
+    box-shadow: 8px 5px 5px gray;
+    visibility:hidden;
+    border-radius: 5px;
+
+}
+
+.effect-content.active{
+    visibility: visible;
+}
+
+.effect-content.off{
+    visibility: hidden;
+}
+
+.effect-content li{
+    font-size: 16px;
+
+}
