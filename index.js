@@ -63,12 +63,12 @@ function createGrid(size){
         for(let j = 1; j <= size; j++){
             let new_div = document.createElement("div");
             new_div.classList.add("grid-child");
-            new_div.setAttribute("style", `width: ${640/size}px; height: ${640/size}px;`)
+            new_div.setAttribute("style", `width: ${480/size}px; height: ${480/size}px;`)
             grid_row.appendChild(new_div);
         }
     }
     show_grid()   
-    effect()
+    effect(type)
 }
 
 // Create a funtion to show grid lines
@@ -104,6 +104,39 @@ toggle.addEventListener("click", ()=>{
     }
 })
 
+// Create an effect to Mouse Effect menu button to show the choices
+const mouse_effect = document.getElementById("mouse-effect")
+
+
+mouse_effect.addEventListener("click", ()=>{
+    const effect_content = document.querySelector(".effect-content")
+    
+    if (effect_content.classList.contains("active")){
+        effect_content.classList.remove("active")
+        effect_content.classList.add("off")
+    }
+    else{
+        effect_content.classList.remove("off")
+        effect_content.classList.add("active")
+    }
+    
+ })
+ 
+// return true or false when the type of mouse effect is chosen
+type = "mouseover"
+const mousedown = document.getElementById("mousedown")
+const mouseover = document.getElementById("mouseover")
+
+mousedown.addEventListener("click", ()=>{
+    type = "mousedown"
+    effect(type)
+})
+mouseover.addEventListener("click", ()=>{
+    type = "mouseover"
+    effect(type)
+}
+)
+ 
 // Get the selected color from buttons to apply it 
 // Create effection to divs that the mouse over
 
@@ -120,15 +153,22 @@ pickr.on("save", (color)=>{
     SELECTED_COLOR = color.toHEXA().toString();    
 })
 
-function effect(){
+function effect(type_mouse){
     const grid_childs = document.querySelectorAll(".grid-child")
     grid_childs.forEach(element => {
-        element.addEventListener("mouseover", ()=>{
-        element.style.backgroundColor = SELECTED_COLOR;
-        console.log(SELECTED_COLOR);
-        });        
-    })
+        if (type_mouse === "mouseover"){
+            element.addEventListener(type_mouse, ()=>{
+                element.style.backgroundColor = SELECTED_COLOR;
+            })
+        }
+        else if (type_mouse === "mousedown"){
+            element.addEventListener(type_mouse, ()=>{
+                element.style.backgroundColor = SELECTED_COLOR;
+            })
+        }
+ } )
 }
+
 
   
 // Update the size of grid square evey time the player pull the range input
@@ -161,6 +201,7 @@ pickr_grid.on("save", (color)=>{
 
 // Create a function to clear the sketch every time the player press the clear button
 // After we hit clear, it should change background color to be white
+
 const clear_button = document.querySelector(".clear")
 
 function clear(){
